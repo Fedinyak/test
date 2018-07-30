@@ -1,1 +1,879 @@
-hiiiiii
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Syntik/title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://unpkg.com/flexboxgrid2@7.1.0/flexboxgrid2.css">
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption:400,700|PT+Sans+Narrow:400,700|PT+Sans:400,400i,700,700i&amp;subset=cyrillic-ext"
+    rel="stylesheet">
+</head>
+
+  <script>
+  /*
+This is a sine-wave oscillator. The method .play() starts the oscillator. There
+ are several setters like .amp(), .freq(), .pan() and .add(). If you want to set all of them at
+ the same time use .set(float freq, float amp, float add, float pan)
+ */
+
+import processing.sound.*;
+
+AudioDevice device;
+
+Pulse pulse;
+SinOsc sine;
+
+float freq=400;
+float amp=0.5;
+float pos;
+
+PFont ptmono;
+
+keyQ kQ = new keyQ();
+keyW kW = new keyW();
+keyE kE = new keyE();
+
+key2 k2 = new key2();
+key3 k3 = new key3();
+
+keyR kR = new keyR();
+keyT kT = new keyT();
+keyY kY = new keyY();
+keyU kU = new keyU();
+
+key5 k5 = new key5();
+key6 k6 = new key6();
+key7 k7 = new key7();
+
+keyI kI = new keyI();
+keyO kO = new keyO();
+keyP kP = new keyP();
+
+key9 k9 = new key9();
+key0 k0 = new key0();
+
+
+int keyActivQ = color(255);
+int keyActivW = color(255);
+int keyActivE = color(255);
+
+int keyActiv2 = color(0);
+int keyActiv3 = color(0);
+
+int keyActivR = color(255);
+int keyActivT = color(255);
+int keyActivY = color(255);
+int keyActivU = color(255);
+
+int keyActiv5 = color(0);
+int keyActiv6 = color(0);
+int keyActiv7 = color(0);
+
+int keyActivI = color(255);
+int keyActivO = color(255);
+int keyActivP = color(255);
+
+int keyActiv9 = color(0);
+int keyActiv0 = color(0);
+
+void setup() {
+  size(960, 260);
+  background(255, 138, 92);
+  frameRate(30);
+  device = new AudioDevice(this, 48000, 32);
+
+  ptmono = createFont("PTMono-Regular", 18);
+
+  sine = new SinOsc(this);
+  pulse = new Pulse(this);
+}
+
+void draw() {
+  background(255, 138, 92);
+  strokeWeight(2);
+
+  fill(0);
+  rect(75, 35, 810, 160, 14);
+   
+  kQ.update();
+  kW.update();
+  kE.update();
+
+  k2.update();
+  k3.update();
+  
+  kR.update();
+  kT.update();
+  kY.update();
+  kU.update();
+
+  k5.update();
+  k6.update();
+  k7.update();
+  
+  kI.update();
+  kO.update();
+  kP.update();
+  
+  k9.update();
+  k0.update();
+
+  pulse.width(0.2);
+}
+
+class keyQ {
+  void update() {
+    fill(keyActivQ);
+    rect(80, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("Q", 120, 175);
+  }
+}
+
+class keyW {
+  void update() {
+    fill(keyActivW);
+    rect(160, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("W", 200, 175);
+  }
+}
+
+class keyE {
+  void update() {
+    fill(keyActivE);
+    rect(240, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("E", 280, 175);
+  }
+}
+
+class key2 {
+  void update() {
+    fill(keyActiv2);
+    rect(133.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("2", 160, 105);
+  }
+}
+
+class key3 {
+  void update() {
+    fill(keyActiv3);
+    rect(213.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("3", 240, 105);
+  }
+}
+
+class keyR {
+  void update() {
+    fill(keyActivR);
+    rect(320, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("R", 360, 175);
+  }
+}
+
+class keyT {
+  void update() {
+    fill(keyActivT);
+    rect(400, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("T", 440, 175);
+  }
+}
+
+class keyY {
+  void update() {
+    fill(keyActivY);
+    rect(480, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("Y", 520, 175);
+  }
+}
+
+class keyU {
+  void update() {
+    fill(keyActivU);
+    rect(560, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("U", 600, 175);
+  }
+}
+
+class key5 {
+  void update() {
+    fill(keyActiv5);
+    rect(373.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("5", 400, 105);
+  }
+}
+
+class key6 {
+  void update() {
+    fill(keyActiv6);
+    rect(453.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("6", 480, 105);
+  }
+}
+
+class key7 {
+  void update() {
+    fill(keyActiv7);
+    rect(533.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("7", 560, 105);
+  }
+}
+
+class keyI {
+  void update() {
+    fill(keyActivI);
+    rect(640, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("I", 680, 175);
+  }
+}
+
+class keyO {
+  void update() {
+    fill(keyActivO);
+    rect(720, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("O", 760, 175);
+  }
+}
+
+class keyP {
+  void update() {
+    fill(keyActivP);
+    rect(800, 40, 80, 150, 12);
+
+    fill(0);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("P", 840, 175);
+  }
+}
+
+class key9 {
+  void update() {
+    fill(keyActiv9);
+    rect(693.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("9", 720, 105);
+  }
+}
+
+class key0 {
+  void update() {
+    fill(keyActiv0);
+    rect(773.33, 40, 53.33, 75, 0, 0, 12, 12);
+    
+    fill(255);
+    textFont(ptmono);
+    textAlign(CENTER);
+    text("0", 800, 105);
+  }
+}
+
+void keyPressed() {
+  sine.stop();
+  pulse.stop();
+
+  println(key);
+
+  if (key == 'q') {
+    sine.play();
+    sine.freq(65.41);
+
+    pulse.play();
+    pulse.freq(130.81);
+
+    keyActivQ = color(255, 222, 209);
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '2') {
+    sine.play();
+    sine.freq(69.30);
+
+    pulse.play();
+    pulse.freq(138.59);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = color(211, 121, 94);
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'w') {
+    sine.play();
+    sine.freq(73.42);
+
+    pulse.play();
+    pulse.freq(146.83);
+
+    keyActivQ = 255;
+    keyActivW = color(255, 222, 209);
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '3') {
+    sine.play();
+    sine.freq(77.78);
+
+    pulse.play();
+    pulse.freq(155.56);
+
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = color(211, 121, 94);
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'e') {
+    sine.play();
+    sine.freq(82.41);
+
+    pulse.play();
+    pulse.freq(164.81);
+
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = color(255, 222, 209);
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'r') {
+    sine.play();
+    sine.freq(87.31);
+
+    pulse.play();
+    pulse.freq(174.61);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = color(255, 222, 209);
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+  } else if (key == '5') {
+    sine.play();
+    sine.freq(92.50);
+
+    pulse.play();
+    pulse.freq(185.00);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = color(211, 121, 94);
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 't') {
+    sine.play();
+    sine.freq(98.00);
+
+    pulse.play();
+    pulse.freq(196.00  );
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = color(255, 222, 209);
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '6') {
+    sine.play();
+    sine.freq(103.83);
+
+    pulse.play();
+    pulse.freq(207.65);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = color(211, 121, 94);
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'y') {
+    sine.play();
+    sine.freq(110.00);
+
+    pulse.play();
+    pulse.freq(220.00);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = color(255, 222, 209);
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '7') {
+    sine.play();
+    sine.freq(116.54);
+
+    pulse.play();
+    pulse.freq(233.08);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = color(211, 121, 94);
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'u') {
+    sine.play();
+    sine.freq(123.47);
+
+    pulse.play();
+    pulse.freq(246.94  );
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = color(255, 222, 209);
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == 'i') {
+    sine.play();
+    sine.freq(130.81);
+
+    pulse.play();
+    pulse.freq(261.63);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = color(255, 222, 209);
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '9') {
+    sine.play();
+    sine.freq(138.59);
+
+    pulse.play();
+    pulse.freq(277.18);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = color(211, 121, 94);
+    keyActiv0 = 0;
+    
+  } else if (key == 'o') {
+    sine.play();
+    sine.freq(146.83);
+
+    pulse.play();
+    pulse.freq(293.66);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = color(255, 222, 209);
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+    
+  } else if (key == '0') {
+    sine.play();
+    sine.freq(155.56);
+
+    pulse.play();
+    pulse.freq(311.13);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = color(211, 121, 94);
+    
+  } else if (key == 'p') {
+    sine.play();
+    sine.freq(164.81);
+
+    pulse.play();
+    pulse.freq(329.63);
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = color(255, 222, 209);
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+
+  } else {
+    sine.stop();
+    pulse.stop();
+    
+    keyActivQ = 255;
+    keyActivW = 255;
+    keyActivE = 255;
+
+    keyActiv2 = 0;
+    keyActiv3 = 0;
+    
+    keyActivR = 255;
+    keyActivT = 255;
+    keyActivY = 255;
+    keyActivU = 255;
+    
+    keyActiv5 = 0;
+    keyActiv6 = 0;
+    keyActiv7 = 0;
+        
+    keyActivI = 255;
+    keyActivO = 255;
+    keyActivP = 255;
+    
+    keyActiv9 = 0;
+    keyActiv0 = 0;
+  }
+}
+  </script>
+<body>
+
+</body>
+
+</html>
